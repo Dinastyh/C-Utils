@@ -6,14 +6,14 @@
 #include <syslog.h>
 
 enum l_log_type {
-  Emergency = 0,     // system is unusable
-  Alert = 1,         // action must be taken immediately
-  Critical = 2,      // critical conditions
-  Error = 3,         // error conditions
-  Warning = 4,       // warning conditions
-  Notice = 5,        // normal but significant condition
-  Informational = 6, // informational messages
-  Debug = 7          // debug-level messages
+  L_EMERGENCY = 0,     // system is unusable
+  L_ALERT = 1,         // action must be taken immediately
+  L_CRITICAL = 2,      // critical conditions
+  L_ERROR = 3,         // error conditions
+  L_WARNING = 4,       // warning conditions
+  L_NOTICE = 5,        // normal but significant condition
+  L_INFORMATIONAL = 6, // informational messages
+  L_DEBUG = 7          // debug-level messages
 };
 
 static const char *l_log_type_name[] = {"Emergency",     "Alert",   "Critical",
