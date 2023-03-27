@@ -26,6 +26,15 @@ static const char *l_log_type_color[] = {WHTHB HRED, REDHB WHT, REDB BLK, RED,
 #ifndef L_NO_LOG
 #ifndef L_NOP
 
+#ifdef L_ONLY_SYSLOG
+
+#define LOG(lvl, ...)                                                          \
+  do {                                                                         \
+    syslog(lvl, __VA_ARGS__);                                                  \
+  } while (0);
+
+#else
+
 #ifdef L_SYSLOG
 
 #define LOG(lvl, ...)                                                          \
@@ -36,15 +45,6 @@ static const char *l_log_type_color[] = {WHTHB HRED, REDHB WHT, REDB BLK, RED,
     fprintf(stderr, __FILE__ ":%d ", __LINE__);                                \
     fprintf(stderr, __VA_ARGS__);                                              \
     fprintf(stderr, "\n");                                                     \
-  } while (0);
-
-#else
-
-#ifdef L_ONLY_SYSLOG
-
-#define LOG(lvl, ...)                                                          \
-  do {                                                                         \
-    syslog(lvl, __VA_ARGS__);                                                  \
   } while (0);
 
 #else
