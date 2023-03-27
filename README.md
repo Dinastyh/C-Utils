@@ -39,10 +39,10 @@ Rename attribute and type
 
 ### Attributes
 
-| Original attribute      | New Name |
-|:-----------------------:|:--------:|
-| __attribute__((packed)) | __packed |
-| __attribute__((unused)) | __unused |
+| Original attribute              | New Name     |
+|:-------------------------------:|:------------:|
+| ``__``attribute``__``((packed)) | ``__``packed |
+| ``__``attribute``__``((unused)) | ``__``unused |
 
 ### Type
 
