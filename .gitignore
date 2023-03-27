@@ -1,0 +1,12 @@
+obj/
+.cache/
+__pycache__/
+
+compile_commands.json
+
+*.o
+*.d
+*.a
+*.so
+
+a.out
