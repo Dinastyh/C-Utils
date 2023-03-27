@@ -22,6 +22,9 @@ static const char *l_log_type_name[] = {"Emergency",     "Alert",   "Critical",
 
 static const char *l_log_type_color[] = {WHTHB HRED, REDHB WHT, REDB BLK, RED,
                                          YEL,        MAG,       CYN,      GRN};
+
+#ifndef L_NO_LOG
+
 #ifdef L_SYSLOG
 
 #define LOG(lvl, ...)                                                          \
@@ -46,5 +49,6 @@ static const char *l_log_type_color[] = {WHTHB HRED, REDHB WHT, REDB BLK, RED,
   } while (0);
 
 #endif /* L_SYSLOG */
+#endif /* L_NO_LOG */
 
 #endif /* LOG_H */
