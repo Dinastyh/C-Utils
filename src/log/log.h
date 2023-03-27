@@ -24,6 +24,7 @@ static const char *l_log_type_color[] = {WHTHB HRED, REDHB WHT, REDB BLK, RED,
                                          YEL,        MAG,       CYN,      GRN};
 
 #ifndef L_NO_LOG
+#ifndef L_NOP
 
 #ifdef L_SYSLOG
 
@@ -39,6 +40,15 @@ static const char *l_log_type_color[] = {WHTHB HRED, REDHB WHT, REDB BLK, RED,
 
 #else
 
+#ifdef L_ONLY_SYSLOG
+
+#define LOG(lvl, ...)                                                          \
+  do {                                                                         \
+    syslog(lvl, __VA_ARGS__);                                                  \
+  } while (0);
+
+#else
+
 #define LOG(lvl, ...)                                                          \
   do {                                                                         \
     fprintf(stderr, CBLD "%s%s" CRST ": ", l_log_type_color[lvl],              \
@@ -48,7 +58,13 @@ static const char *l_log_type_color[] = {WHTHB HRED, REDHB WHT, REDB BLK, RED,
     fprintf(stderr, "\n");                                                     \
   } while (0);
 
+#endif /* L_ONLY_SYSLOG */
 #endif /* L_SYSLOG */
+#else
+static inline void __nop(void) { return; };
+#define LOG(lvl, ...) __nop();
+
+#endif /* L_NOP*/
 #endif /* L_NO_LOG */
 
 #endif /* LOG_H */
