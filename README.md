@@ -30,8 +30,16 @@ LOG(lvl, ...)
 ### Output:
 ![Log Output](Pictures/log_output.png)
 
-### Syslog
-You can make log also writted in syslog by defining **L_SYSLOG**. Don't forget to use openlog function before.
+
+### Conditional define 
+
+If you define **L_SYSLOG**, LOG macro will also log in syslog. Don't forget to use openlog function before.
+
+If you define **L_ONLY_SYSLOG**, LOG macro will log only in syslog. Don't forget to use openlog function before.
+
+If you define **L_NOP**, no log will be print but you don't need to define LOG macro.
+
+If you define **L_NO_LOG**, LOG macro is not define but you must define it.
 
 ## Aliases
 
@@ -60,6 +68,8 @@ Rename attribute and type
 ## Slice
 
 Utils for array manipulation
+
+This utils use aliases
 
 ### Slice structure
 
@@ -136,3 +146,18 @@ int main(void) {
   return 0;
 }
 ```
+
+## Epoll Builder
+
+Utils make easier Epoll usage
+
+This utils use aliases, slice and log
+
+### Usage
+
+#### Iface
+
+In first you should create a slice of v\_iface.
+You must create an iface structure by socket that you want add to epoll at its starting point;
+
+To init v\_iface structure you can use v\_iface\_init.
