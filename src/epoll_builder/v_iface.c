@@ -20,8 +20,7 @@ bool v_iface_init(struct v_iface *v_iface, int socket,
     goto error_allocation_context;
   }
 
-  v_iface->socket = socket;
-  v_iface->epoll_event_type = epoll_event_type;
+  *v_iface = (struct v_iface){socket, epoll_event_type, context};
 
   return false;
 
