@@ -1,8 +1,8 @@
 #ifndef ALIASES_H
 #define ALIASES_H
 
-#define __unused __attibutes__((unused))
-#define __packed __attibutes__((packed))
+#define __unused __attribute__((unused))
+#define __packed __attribute__((packed))
 
 #include <stdbool.h>
 #include <stddef.h>
